@@ -1,0 +1,179 @@
+public class Rechteck extends Figur{
+
+	private int laenge;
+	private int breite;
+
+	Rechteck(){
+		super();
+}
+
+
+Rechteck(Punkt anker, int breite, int laenge){
+	super(anker);
+	this.laenge = laenge;
+	this.breite = breite;
+}
+	
+
+public int getLaenge(){
+return laenge;
+}
+
+public int getBreite(){
+return breite;
+}
+
+public double berechneFlaeche(){
+return laenge * breite;
+}
+
+public double berechneUmfang(){
+return 2 * (breite + laenge);
+}
+
+public String toString(){
+return super.toString() + "\nLaenge: " + laenge + " und Breite: " + breite;
+}
+
+}
+
+_____________________
+
+
+public Quadrat(){
+super();
+System.out.println("Warnung: Parameterloser Konstruktor von Quadrat wurde aufgerufen!")
+}
+
+public Quadrat(int breite, Punkt p){
+super(p, breite, breite);
+}
+
+//berechne die diagonale eines quadrats
+public double berechneDiagonale(){
+int breite = getBreite();
+return Math.sqrt(breite * breite + breite * breite;
+}
+
+}
+
+___________
+
+
+public class Test{
+public static void main(String[] args){
+
+Quadrat q = new Quadrat(6, new Punkt (0,0));
+Rechteck r = q;
+
+System.out.println(r);
+//Anker: x-Koordinate: 0 und y-Koor: 0
+// Laenge: 5 und Breite: 5
+
+System.out.println(r.berechenFlaeche()); //25
+System.out.println(r.berechenDiagonale());
+// Fehler, da methode in Rechteck nicht implementiert wurde
+// (keine Dummy-Methode)
+
+
+Quadrat q1 = (Quadrat) r;
+//casting noetig
+
+
+System.out.println(q1);
+//methode aus Rechteck wird aufgerufen (output siehe oben)
+
+System.out.println(q1.berechneFlaeche());
+//methode aus Rechteck wird aufgerufen: 25
+
+System.out.println(q1.berechneDiagonale());
+//methode aus Quadrat wird aufgerufen
+
+}
+}
+
+
+
+____
+
+
+public class Figur{
+
+private Punkt anker;
+public String farbe = "gelb";
+
+public Figur() {
+anker = new Punkt(0,0);
+System.out.println("Warnung: Parameterloser Konstruktor von Figur wurde aufgerufen!");
+}
+
+public Figur(Punkt p) throws NullPointerException{
+
+if (p==null) throw new NullPointerException("Punkt darf nicht null sein");
+anker = p;
+}
+
+public String getFarbe(){
+return farbe;
+}
+
+//Fuer abstand mit x und y (abgerundet)
+public int berechneXAbstand(Figur f){
+int abstand = (int)
+(Math.sqrt(Math.pow(this.anker.getX() - f.anker.getX()),2)
++ Math.pow((this.anker.getY() - f.anker.getY()),2)));
+return abstand;
+}
+
+
+//berechnet den abstand auf der x-achse von dieser figut und einer uebergebenen figur
+
+public int berechneXAbstand2(Figur f){
+return Math.abs(this.anker.getX() - f.anker().getX());
+//betrag um keinen negativen Abstand zu haben
+}
+
+public int berechneXAbstand3(Figur f) {
+return Math.abs(anker.getX() - f.anker.getX());
+} kein this :( :)
+
+@Override
+public String toString(){
+
+//return "Anker = (" + anger.getX() + ", " + anker.getY() + ").";
+
+return anker.toString();
+
+
+}
+
+}
+
+
+}
+
+b b new c:
+implizit erlaubt
+
+a a = b
+implizit erlaubt
+
+object o = b
+explizites casting
+
+
+c c c b: 
+explizites casting
+erlaubt
+b zeigt auf c (zeile bb new c)
+
+
+c c2 c o
+explizites casting
+erlaubt
+o referenz ueber b zeigt auf c (zeile bb new c)
+
+d d d b 
+casting geht nicht.
+d hat nichts mit b oder c zu tun.  
+
